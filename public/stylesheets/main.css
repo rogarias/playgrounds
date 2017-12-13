@@ -1,0 +1,17 @@
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .image-responsive {
+    width: 100%;
+}
+
+#delete-form {
+    display: inline;
+}
+
+/* Google Maps */
+#map {
+    height: 400px;
+    width: 100%;
+}
