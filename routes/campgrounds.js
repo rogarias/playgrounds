@@ -3,18 +3,34 @@ var router          = express.Router();
 var Campground      = require("../models/campground"),
     middleware      = require("../middleware"), //no need to specify filename index.js - special name
     Comment         = require("../models/comment"),
+    FuzzySearch     = require('fuzzy-search'),
     geocoder        = require("geocoder");
     
 //INDEX
 router.get("/", function(req, res){
-    //GET ALL CAMPGROUNDS FROM THE DB
-    Campground.find({}, function(err, allCampgrounds){
-        if(err){
-            console.log(err);
-        } else {
-            res.render("campgrounds/index",{campgrounds:allCampgrounds, page: 'campgrounds'});
-        }
-    });
+    var noMatch = null;
+    if(req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        Campground.find({name: regex}, function(err, allCampgrounds){
+            if(err){
+                res.redirect("back");
+            } else {
+                if(allCampgrounds.length < 1) {
+                    noMatch = "No campgrounds match that query, please try again.";
+                } 
+                res.render("campgrounds/index", {campgrounds: allCampgrounds, noMatch: noMatch});
+            }
+        });
+    } else {
+        // get all campgrounds from DB
+        Campground.find({}, function(err, allCampgrounds){
+            if(err){
+                console.log(err);
+            } else {
+                res.render("campgrounds/index", {campgrounds: allCampgrounds, noMatch: noMatch});
+            } 
+        });
+    }
 });
 
 //CREATE
@@ -102,5 +118,10 @@ router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res) {
         }
     });
 });
+
+// Define escapeRegex function for search feature
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;
