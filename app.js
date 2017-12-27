@@ -13,6 +13,10 @@ var express                 = require("express"),
     flash                   = require("connect-flash"),
     seedDB                  = require("./seeds");
 
+// configure dotenv
+require('dotenv').config();
+
+
 //requiring routes    
 var commentRoutes           = require("./routes/comments"),
     campgroundRoutes        = require("./routes/campgrounds"),
@@ -24,8 +28,9 @@ app.set("view engine","ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
-app.locals.moment = require('moment');
+
 //seedDB(); //seed the database
+app.locals.moment = require('moment');
 
 //PASSPORT CONFIG
 app.use(require("express-session")({
