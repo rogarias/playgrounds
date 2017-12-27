@@ -7,7 +7,7 @@ var campgroundSchema = new mongoose.Schema({
     description: String,
     createdAt: { 
         type: Date, 
-        default: Date.now 
+        default: Date.now
     },
     location: "String",
     lat: "Number",
