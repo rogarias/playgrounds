@@ -23,8 +23,8 @@ var commentRoutes           = require("./routes/comments"),
     indexRoutes             = require("./routes/index");
 
 //mongoose.connect("mongodb://localhost/yelp_camp");
-//mongoose.connect(process.env.DATABASEURL);
-mongoose.connect("mongodb://rogarias:test@ds131687.mlab.com:31687/yelpcamp_rogarias");
+mongoose.connect(process.env.DATABASEURL);
+//mongoose.connect("mongodb://rogarias:test@ds131687.mlab.com:31687/yelpcamp_rogarias");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine","ejs");
