@@ -1,7 +1,7 @@
 var express                 = require("express"),
     app                     = express(),
     bodyParser              = require("body-parser"),
-    Campground              = require("./models/campground"),
+    Playground              = require("./models/playground"),
     Comment                 = require("./models/comment"),
     User                    = require("./models/user"),
     passport                = require("passport"),
@@ -19,7 +19,7 @@ require('dotenv').config();
 
 //requiring routes    
 var commentRoutes           = require("./routes/comments"),
-    campgroundRoutes        = require("./routes/campgrounds"),
+    playgroundRoutes        = require("./routes/playgrounds"),
     indexRoutes             = require("./routes/index");
 
 //mongoose.connect("mongodb://localhost/yelp_camp");
@@ -54,10 +54,10 @@ app.use(function(req, res, next){
 });
 
 app.use("/", indexRoutes);
-app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/playgrounds", playgroundRoutes);
+app.use("/playgrounds/:id/comments", commentRoutes);
 
 //Starting the server
 app.listen(process.env.PORT, process.env.IP, function(){
-   console.log("YelpCamp has started!"); 
+   console.log("Playgrounds has started!"); 
 });

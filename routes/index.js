@@ -1,7 +1,7 @@
 var express     = require("express");
 var router      = express.Router();
 var User        = require("../models/user"),
-    Campground  = require("../models/campground"),
+    Playground  = require("../models/playground"),
     async       = require("async"),
     nodemailer  = require("nodemailer"),
     crypto      = require("crypto"), //part of node - no need to install
@@ -40,8 +40,8 @@ router.post("/register", function(req, res) {
             return res.redirect("/register");
         }
         passport.authenticate("local")(req, res, function(){
-            req.flash("success", "Welcome to YelpCamp, " + user.username + "!");
-            res.redirect("/campgrounds");
+            req.flash("success", "Welcome to Playgrounds, " + user.username + "!");
+            res.redirect("/playgrounds");
         });
     });
 });
@@ -53,10 +53,10 @@ router.get("/login", function(req, res) {
 
 //login logic
 router.post("/login", passport.authenticate("local",{ 
-    successRedirect: "/campgrounds",
+    successRedirect: "/playgrounds",
     failureRedirect: "/login",
     failureFlash: true,
-    successFlash: "Welcome to YelpCamp!"
+    successFlash: "Welcome to Playgrounds!"
 }), function(req, res) {
 });
 
@@ -64,7 +64,7 @@ router.post("/login", passport.authenticate("local",{
 router.get("/logout", function(req, res) {
     req.logout();
     req.flash("success", "Logged out successfully!");
-    res.redirect("/campgrounds");
+    res.redirect("/playgrounds");
 });
 
 //PASSWORD RESET - FORGOT PASSWORD
@@ -107,8 +107,8 @@ router.post("/forgot", function(req, res, next){
             var mailOptions = {
                 to: user.email,
                 from: "rogariasj@gmail.com",
-                subject: "YelpCamp Password Reset",
-                text: 'You are receiving this because you (or someone else) have requested the reset of the password for your YelpCamp account.\n\n' +
+                subject: "Playgrounds Password Reset",
+                text: 'You are receiving this because you (or someone else) have requested the reset of the password for your Playgrounds account.\n\n' +
                   'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
                   'http://' + req.headers.host + '/reset/' + token + '\n\n' +
                   'If you did not request this, please ignore this email and your password will remain unchanged.\n'
@@ -181,7 +181,7 @@ router.post('/reset/:token', function(req, res) {
       });
     }
   ], function(err) {
-    res.redirect('/campgrounds');
+    res.redirect('/playgrounds');
   });
 });
 
@@ -192,12 +192,12 @@ router.get("/users/:id", function(req, res) {
             req.flash("error", "Something went wrong!");
             res.redirect("/");
         }
-        Campground.find().where("author.id").equals(foundUser._id).exec(function(err, campgrounds){
+        Playground.find().where("author.id").equals(foundUser._id).exec(function(err, playgrounds){
             if(err){
                 req.flash("error", "Something went wrong!");
                 res.redirect("/");
             }
-            res.render("users/show", {user: foundUser, campgrounds: campgrounds});
+            res.render("users/show", {user: foundUser, playgrounds: playgrounds});
         });
     });
 });

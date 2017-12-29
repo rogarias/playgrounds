@@ -6,15 +6,15 @@
 
 <header class="jumbotron">
     <div class="container">
-        <h1><i class="glyphicon glyphicon-tent"></i> Welcome to YelpCamp!</h1>
-        <p>View our list of beautiful campgrounds from all over ther world</p>
+        <h1><i class="glyphicon glyphicon-map-marker"></i> Welcome to Playgrounds</h1>
+        <p>Find a place to play your favorite sport near you!</p>
         <p>
-            <a class="btn btn-primary" class="btn btn-lrg" href="/campgrounds/new">Add a new campground</a>
+            <a class="btn btn-primary" class="btn btn-lrg" href="/playgrounds/new">Add a new playground</a>
         </p>
         <p>
-            <form class="form-inline" action="/campgrounds" method="GET">
+            <form class="form-inline" action="/playgrounds" method="GET">
                 <div class="form-group">
-                    <input type="search" class="form-control" name="search" placeholder="Search campgrounds"></input>
+                    <input type="search" class="form-control" name="search" placeholder="Search playgrounds"></input>
                     <button class="btn btn-default">Submit</button>
                 </div>
             </form>
@@ -29,15 +29,15 @@
             <h4 class="well"><%= noMatch %><h4>
         </div>
     <% } else { %>
-        <% campgrounds.forEach(function(campgrounds){ %>
+        <% playgrounds.forEach(function(playgrounds){ %>
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">
-                    <img src="<%= campgrounds.image %>">
+                    <img src="<%= playgrounds.image %>">
                     <div class="caption">
-                        <h4><%= campgrounds.name %></h4>    
+                        <h4><%= playgrounds.name %></h4>    
                     </div>
                     <p>
-                        <a href="/campgrounds/<%= campgrounds._id %>" class="btn btn-primary">More Info</a>
+                        <a href="/playgrounds/<%= playgrounds._id %>" class="btn btn-primary">More Info</a>
                     </p>
                 </div>
             </div>

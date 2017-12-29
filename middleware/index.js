@@ -1,16 +1,16 @@
-var Campground              = require("../models/campground"),
+var Playground              = require("../models/playground"),
     Comment                 = require("../models/comment");
 
 var middlewareObj = {};
 
-middlewareObj.checkCampgroundOwnership = function(req, res, next){
+middlewareObj.checkPlaygroundOwnership = function(req, res, next){
     if(req.isAuthenticated()) {
-        Campground.findById(req.params.id, function(err, foundCampground){
+        Playground.findById(req.params.id, function(err, foundPlayground){
             if(err) {
-                req.flash("error", "Campground not found");
+                req.flash("error", "Playground not found");
                 res.redirect("back");
             //check if user is equal to author    
-            } else if (foundCampground.author.id.equals(req.user._id) || req.user.isAdmin) {
+            } else if (foundPlayground.author.id.equals(req.user._id) || req.user.isAdmin) {
                 next();
             } else {
                 req.flash("error", "You don't have permission to do that");

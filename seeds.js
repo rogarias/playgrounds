@@ -1,5 +1,5 @@
 var mongoose    = require("mongoose"),
-    Campground  = require("./models/campground"),
+    Playground  = require("./models/playground"),
     Comment     = require("./models/comment");
 
 var data = [
@@ -23,23 +23,23 @@ var data = [
         image: "https://images.unsplash.com/photo-1496545672447-f699b503d270?auto=format&fit=crop&w=751&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a mollis enim. Nullam blandit, est sit amet ornare tristique, sapien mauris condimentum arcu, et posuere leo lacus ac urna. Etiam malesuada est est, vitae placerat massa porta ut. Mauris volutpat vel metus et efficitur."
     },
-]
+];
 
 
 function seedDB(){
-    //REMOVE ALL CAMPGROUNDS
-    Campground.remove({}, function(err){
+    //REMOVE ALL PLAYGROUNDS
+    Playground.remove({}, function(err){
         if(err) {
             console.log(err);
         }
-        console.log("Removed Campgrounds");
-        //CREATE NEW CAMPGROUNDS
+        console.log("Removed Playgrounds");
+        //CREATE NEW Playgrounds
         data.forEach(function(seed){
-            Campground.create(seed, function(err, campground) {
+            Playground.create(seed, function(err, playground) {
                 if(err) {
                     console.log(err);
                 } else {
-                    console.log("Added a campgrounds");
+                    console.log("Added a playground");
                     //Creat a comment
                     Comment.create(
                         {
@@ -49,8 +49,8 @@ function seedDB(){
                                 if(err) {
                                     console.log(err);
                                 } else {
-                                    campground.comments.push(comment);
-                                    campground.save();
+                                    playground.comments.push(comment);
+                                    playground.save();
                                     console.log("Added a comment");
                                 }
                     });
@@ -59,8 +59,5 @@ function seedDB(){
         });
     });
 }
-
-
-//ADD COMMENTS
 
 module.exports = seedDB;

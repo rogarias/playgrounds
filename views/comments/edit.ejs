@@ -3,7 +3,7 @@
 <div class="row">
     <h1 style="text-align: center;">Edit Review</h1>
     <div style="width: 30%; margin: 25px auto">
-        <form action="/campgrounds/<%= campground_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+        <form action="/playgrounds/<%= playground_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
             <div class="form-group">
                 <label for="comment[text]">Review Text</label>
                 <input class="form-control" type="text" value="<%= comment.text %>" name="comment[text]"></input>
@@ -12,7 +12,7 @@
                 <button class="btn btn-lrg btn-default btn-block btn-primary">Submit!</button>
             </div>
         </form>
-        <a href="/campgrounds">Go Back</a>
+        <a href="/playgrounds">Go Back</a>
     </div>
 </div>
 
