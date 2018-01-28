@@ -20,7 +20,7 @@ var imageFilter = function (req, file, cb) {
     }
     cb(null, true);
 };
-var upload = multer({ storage: storage, fileFilter: imageFilter})
+var upload = multer({ storage: storage, fileFilter: imageFilter});
 
 var cloudinary = require('cloudinary');
 cloudinary.config({ 
@@ -124,7 +124,20 @@ router.put("/:id", middleware.checkPlaygroundOwnership, function(req, res) {
         var lat = data.results[0].geometry.location.lat;
         var lng = data.results[0].geometry.location.lng;
         var location = data.results[0].formatted_address;
-        var newData = {name: req.body.name, image: req.body.image, description: req.body.description, price: req.body.price, location: location, lat: lat, lng: lng};
+        var newData = {
+            name: req.body.name, 
+            image: req.body.image, 
+            description: req.body.description, 
+            price: req.body.price,
+            priceNotes: req.body.priceNotes,
+            type: req.body.type,
+            sport: req.body.sport,
+            lights: req.body.lights,
+            location: location, 
+            lat: lat,
+            lng: lng
+        };
+        console.log(newData);
         Playground.findByIdAndUpdate(req.params.id, {$set: newData}, function(err, updatedPlayground) {
             if(err) {
                 req.flash("error", err.message);

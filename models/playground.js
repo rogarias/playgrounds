@@ -3,6 +3,10 @@ var mongoose    = require("mongoose");
 var playgroundSchema = new mongoose.Schema({
     name: String,
     price: String,
+    priceNotes: String,
+    sport: String,
+    lights: Boolean,
+    type: String,
     image: String,
     description: String,
     createdAt: { 

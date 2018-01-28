@@ -1,6 +1,5 @@
 <% include ../partials/header %>
 
-
 <div class="row">
     <h1 style="text-align: center;">Edit Playground - <%= playground.name %></h1>
     <div style="width: 30%; margin: 25px auto">
@@ -11,7 +10,11 @@
             </div>
             <div class="form-group">
                 <label for="price">Price</label>
-                <input class="form-control" type="number" value="<%= playground.price %>" name="price" min="0.01" step="0.01"></input>
+                <input class="form-control" type="number" value="<%= playground.price %>" name="price" min="0.00" step="0.01"></input>
+            </div>
+            <div class="form-group">
+                <label for="priceNotes">Price Notes</label>
+                <input class="form-control" type="text" name="priceNotes" value="<%= playground.priceNotes %>" id="priceNotes"></input>
             </div>
             <div class="form-group">
                 <label for="location">Location</label>
@@ -25,6 +28,32 @@
                 <label for="description">Playground Description</label>
                 <input class="form-control" type="text" value="<%= playground.description %>" name="description"></input>
             </div>
+            
+            <div class="form-group">
+                <label for="sport">Available Sports</label>
+                <input class="form-control" type="text" name="sport" id="sport" value="<%= playground.sport %>"></input>
+            </div>
+            
+            <!--Checkboxes-->
+            <div class="form-group" style="display:inline-block">
+                <label for="lights">Lights Available</label>
+                <input class="form-control" type="checkbox" name="lights" id="lights" <%= playground.lights ? "checked" : "" %>></input>
+            </div>
+            
+            <div class="form-group">
+                <legend>Playground Type</legend>
+                <div style="display:inline-block">
+                    <label for="indoor">Indoor</label>
+                    <input class="form-control" type="checkbox" name="type" id="indoor" value="indoor" <%= playground.type === "indoor" ? "checked" : "" %>></input>
+                </div>
+                <div style="display:inline-block">
+                    <label for="outdoor">Outdoor</label>
+                    <input class="form-control" type="checkbox" name="type" id="outdoor" value="outdoor" <%= playground.type === "outdoor" ? "checked" : "" %>></input>
+                </div>
+            </div>
+            
+            <!--End of Checkboxes-->
+            
             <div class="form-group">
                 <button class="btn btn-lrg btn-default btn-block btn-primary">Submit!</button>
             </div>
@@ -32,7 +61,6 @@
         <a href="/playgrounds/<%= playground._id %>">Go Back</a>
     </div>
 </div>
-
 
 
 <% include ../partials/footer %>

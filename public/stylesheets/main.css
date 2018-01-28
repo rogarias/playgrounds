@@ -38,3 +38,7 @@ body {
 .container .text-muted {
   margin: 20px 0;
 }
+
+#price {
+  font-weight: bold;
+}
