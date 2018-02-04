@@ -5,24 +5,24 @@
     <div style="width: 30%; margin: 25px auto;">
         <form action="/register" method="post">
             <div class="form-group">
-                <label for="username">Username</label>
-                <input class="form-control" type="text" name="username">
+                <label for="username">Username<span id="required"> *</span></label>
+                <input class="form-control" type="text" name="username" required>
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
-                <input class="form-control" type="password" name="password">
+                <label for="password">Password<span id="required"> *</span></label>
+                <input class="form-control" type="password" name="password" required>
             </div>
             <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input class="form-control" type="text" name="firstName">
+                <label for="firstName">First Name<span id="required"> *</span></label>
+                <input class="form-control" type="text" name="firstName" required>
             </div>
             <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input class="form-control" type="text" name="lastName">
+                <label for="lastName">Last Name<span id="required"> *</span></label>
+                <input class="form-control" type="text" name="lastName" required>
             </div>
             <div class="form-group">
-                <label for="email">Email</label>
-                <input class="form-control" type="text" name="email">
+                <label for="email">Email<span id="required"> *</span></label>
+                <input class="form-control" type="email" name="email" required>
             </div>
             <div class="form-group">
                 <label for="avatar">Avatar URL</label>
