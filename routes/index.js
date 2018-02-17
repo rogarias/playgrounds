@@ -57,7 +57,7 @@ router.post("/login", passport.authenticate("local",{
     failureRedirect: "/login",
     failureFlash: true,
     successFlash: "Welcome to Playgrounds!"
-}), function(req, res) {
+    }), function(req, res) {
 });
 
 //logout route
@@ -153,7 +153,7 @@ router.post('/reset/:token', function(req, res) {
                 done(err, user);
               });
             });
-          })
+          });
         } else {
             req.flash("error", "Passwords do not match.");
             return res.redirect('back');

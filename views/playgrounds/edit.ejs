@@ -1,7 +1,7 @@
 <% include ../partials/header %>
 
+<h1 style="text-align: center;">Edit Playground - <%= playground.name %></h1>
 <div class="row">
-    <h1 style="text-align: center;">Edit Playground - <%= playground.name %></h1>
     <div style="width: 30%; margin: 25px auto">
         <form action="/playgrounds/<%= playground.id %>?_method=PUT" method="POST">
             <div class="form-group">
@@ -55,7 +55,7 @@
             <!--End of Checkboxes-->
             
             <div class="form-group">
-                <button class="btn btn-lrg btn-default btn-block btn-primary">Submit!</button>
+                <button class="btn btn-lrg btn-default btn-block btn-secondary">Submit!</button>
             </div>
         </form>
         <a href="/playgrounds/<%= playground._id %>">Go Back</a>

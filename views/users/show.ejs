@@ -3,14 +3,14 @@
 <div class="row">
     <div class="col-md-4">
         <h1><%= user.firstName + " " + user.lastName %></h1>
-        <div class="thumbnail">
-            <img src="<%= user.avatar %>" alt="user profile image"></img>
-            <div class="caption"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>
+        <div class="card mb-2">
+            <img class="card-img-top" src="<%= user.avatar %>" alt="user profile image"></img>
+            <div class="card-body"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>
         </div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam imperdiet odio non consequat ultrices. Duis urna dui, efficitur vitae ante vitae, consectetur pharetra purus. Ut non lacus ut sem tempus tincidunt ut vel dui. Duis molestie posuere purus ornare lacinia. Nunc venenatis accumsan sagittis. Sed sit amet imperdiet velit. Donec quis mi egestas, condimentum erat sed, dignissim nibh. Nulla viverra eu magna gravida auctor.
     </div>
     <div class="col-md-8">
-        <h3><%= user.username %>'s Playgrounds</h3>
+        <h4><%= user.username %>'s Playgrounds</h4>
         <ul>
             <% playgrounds.forEach(function(playground) { %>
                 <li><a href="/playgrounds/<%= playground.id %>"><%= playground.name %></a></li>

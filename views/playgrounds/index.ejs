@@ -4,47 +4,48 @@
 <!--    <h1>You are logged in as an admin!</h1>-->
 <!--<% } %>-->
 
-<header class="jumbotron">
-    <div class="container">
-        <h1><i class="glyphicon glyphicon-map-marker"></i> Welcome to Playgrounds</h1>
-        <p>Find a place to play your favorite sport near you!</p>
-        <p>
-            <a class="btn btn-primary" class="btn btn-lrg" href="/playgrounds/new">Add a new playground</a>
-        </p>
-        <p>
-            <form class="form-inline" action="/playgrounds" method="GET">
-                <div class="form-group">
-                    <input type="search" class="form-control" name="search" placeholder="Search playgrounds"></input>
-                    <button class="btn btn-default">Submit</button>
-                </div>
-            </form>
-        </p>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1><i class="glyphicon glyphicon-map-marker"></i> Welcome to Playgrounds</h1>
+            <p class="lead">Find a place to play your favorite sport near you!</p>
+            <hr class="my-4">
+            <p>
+                <a class="btn btn-secondary btn btn-lrg" href="/playgrounds/new">Add a new playground</a>
+            </p>
+            <p>
+                <form class="form-inline" action="/playgrounds" method="GET">
+                    <div class="form-group">
+                        <input type="search" class="form-control" name="search" placeholder="Search playgrounds"></input>
+                        <button class="btn btn-dark mx-sm-2">Submit</button>
+                    </div>
+                </form>
+            </p>
+        </div>
     </div>
-</header>
+
 
 
 <div class="row text-center" style="display-flex; flex-wrap: wrap;">
     <% if(noMatch !== null){ %>
         <div class=container>
-            <h4 class="well"><%= noMatch %><h4>
+            <h4 class="card"><%= noMatch %><h4>
         </div>
     <% } else { %>
         <% playgrounds.forEach(function(playgrounds){ %>
             <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <img src="<%= playgrounds.image %>">
-                    <div class="caption">
-                        <h4><%= playgrounds.name %></h4>    
+                <div class="card mb-4">
+                    <img class="card-img-top" src="<%= playgrounds.image %>">
+                    <div class="card-body">
+                        <h5><%= playgrounds.name %></h5>  
                     </div>
-                    <p>
-                        <a href="/playgrounds/<%= playgrounds._id %>" class="btn btn-primary">More Info</a>
-                    </p>
+                    <div class="card-footer">
+                      <a href="/playgrounds/<%= playgrounds._id %>" class="btn btn-outline-info btn-sm">More Info</a>
+                    </div>
                 </div>
             </div>
         <% }) %>
     <% } %>
 </div>
-
 
 
 <% include ../partials/footer %>
